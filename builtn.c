@@ -4,7 +4,7 @@
  * fct_exit - Handle shell exit command.
  * @in: Pointer to the shell information struct.
  *
- * return: Signal to terminate shell or error code.
+ * Return: Signal to terminate shell or error code.
  */
 int fct_exit(infocmd *in)
 {
@@ -32,7 +32,7 @@ int fct_exit(infocmd *in)
  * fct_current - Handle shell 'cd' command.
  * @in: Pointer to the shell information struct.
  *
- * return: 0 on success, 1 on informational output, -1 on failure.
+ * Return: 0 on success, 1 on informational output, -1 on failure.
  */
 int fct_current(infocmd *in)
 {
@@ -80,7 +80,7 @@ int fct_current(infocmd *in)
  * fct_help - Handle shell 'help' command.
  * @in: Pointer to the shell information struct.
  *
- * return: Always rturns 0.
+ * Return: Always rturns 0.
  */
 int fct_help(infocmd *in)
 {
