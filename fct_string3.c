@@ -17,7 +17,8 @@ char **str_to_words(char *strin, char *tds)
 	if (!tds)
 		tds = " ";
 	for (i = 0; strin[i] != '\0'; i++)
-		if (!fct_delim(strin[i], tds) && (fct_delim(strin[i + 1], tds) || !strin[i + 1]))
+		if (!fct_delim(strin[i], tds) && 
+			(fct_delim(strin[i + 1], tds) || !strin[i + 1]))
 			nbr++;
 
 	if (nbr == 0)
