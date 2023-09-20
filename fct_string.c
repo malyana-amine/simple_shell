@@ -23,7 +23,8 @@ int str_length(char *strin)
  * @strin1: string 1
  * @strin2: string 2
  *
- * Return: <0 if (strin1 < strin2) and >0 if (strin1 > strin2) and 0 if (s1 == s2)
+ * Return: <0 if (strin1 < strin2) and >0
+ * if (strin1 > strin2) and 0 if (s1 == s2)
  */
 int str_comparison(char *strin1, char *strin2)
 {
