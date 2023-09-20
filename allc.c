@@ -18,7 +18,7 @@ char *set_mem(char *p, char byte, unsigned int n_b)
 
 /**
  * str_free - array of string is freed
- * @str: string
+ * @string: string
  */
 void str_free(char **string)
 {
