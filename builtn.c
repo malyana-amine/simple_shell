@@ -4,7 +4,7 @@
  * fct_exit - Handle shell exit command.
  * @in: Pointer to the shell information struct.
  *
- * rturn: Signal to terminate shell or error code.
+ * return: Signal to terminate shell or error code.
  */
 int fct_exit(infocmd *in)
 {
@@ -19,13 +19,13 @@ int fct_exit(infocmd *in)
 			er_print(in, "Illegal number: ");
 			er_puts(in->argv[1]);
 			e_put_char('\n');
-			rturn (1);
+			return (1);
 		}
 		in->err_num = er_conv(in->argv[1]);
-		rturn (-2);
+		return (-2);
 	}
 	in->err_num = -1;
-	rturn (-2);
+	return (-2);
 }
 
 /**
@@ -56,7 +56,7 @@ int fct_current(infocmd *in)
 		{
 			str_puts(str);
 			_put_char('\n');
-			rturn (1);
+			return (1);
 		}
 		str_puts(get_var_env(in, "OLDPWD=")), _put_char('\n');
 		rt = chdir((d = get_var_env(in, "OLDPWD=")) ? d : "/");
@@ -73,7 +73,7 @@ int fct_current(infocmd *in)
 		set_env(in, "OLDPWD", get_var_env(in, "PWD="));
 		set_env(in, "PWD", getcwd(buffer, 1024));
 	}
-	rturn (0);
+	return (0);
 }
 
 /**
@@ -90,5 +90,5 @@ int fct_help(infocmd *in)
 	str_puts("help call works. Function not yet implemented \n");
 	if (0)
 		str_puts(*arr);
-	rturn (0);
+	return (0);
 }
