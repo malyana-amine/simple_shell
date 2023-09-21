@@ -1,76 +1,92 @@
 #include "shell.h"
 
 /**
- * str_length - get the length of a string
- * @strin: a string
+ * str_length - Get the length of a string.
+ * @str: A string.
  *
- * Return: int
+ * Return: Length of the string or 0 if NULL.
  */
-int str_length(char *strin)
+int str_length(const char *str)
 {
-	int i = 0;
+    int length = 0;
 
-	if (!strin)
-		return (0);
+    if (str != NULL)
+    {
+        while (*str != '\0')
+        {
+            length++;
+            str++;
+        }
+    }
 
-	while (*strin++)
-		i++;
-	return (i);
+    return length;
 }
 
 /**
- * str_comparison - lexicogarphic comparison
- * @strin1: string 1
- * @strin2: string 2
+ * str_comparison - Lexicographic comparison of two strings.
+ * @str1: String 1.
+ * @str2: String 2.
  *
- * Return: <0 if (strin1 < strin2) and >0
- * if (strin1 > strin2) and 0 if (s1 == s2)
+ * Return:
+ *   < 0 if str1 < str2
+ *   > 0 if str1 > str2
+ *   0 if str1 == str2
  */
-int str_comparison(char *strin1, char *strin2)
+int str_comparison(const char *str1, const char *str2)
 {
-	while (*strin1 && *strin2)
-	{
-		if (*strin1 != *strin2)
-			return (*strin1 - *strin2);
-		strin1++;
-		strin2++;
-	}
-	if (*strin1 == *strin2)
-		return (0);
-	else
-		return (*strin1 < *strin2 ? -1 : 1);
+    while (*str1 && *str2)
+    {
+        if (*str1 != *str2)
+            return (*str1 - *str2);
+        str1++;
+        str2++;
+    }
+
+    return (*str1 - *str2);
 }
 
 /**
- * starts_with - checks if a string starts with a string
- * @strin: string
- * @subst: substring
+ * starts_with - Check if a string starts with a substring.
+ * @str: String.
+ * @substr: Substring.
  *
- * Return: pointer or NULL
+ * Return: Pointer to the start of the substring in str or NULL if not found.
  */
-char *starts_with(const char *strin, const char *subst)
+const char *starts_with(const char *str, const char *substr)
 {
-	while (*subst)
-		if (*subst++ != *strin++)
-			return (NULL);
-	return ((char *)strin);
+    while (*substr)
+    {
+        if (*substr != *str)
+            return NULL;
+        substr++;
+        str++;
+    }
+
+    return str;
 }
 
 /**
- * str_cat - concatenates two strings
- * @d: the first string
- * @s: the second string
+ * str_cat - Concatenate two strings.
+ * @dest: The destination string.
+ * @src: The source string.
  *
- * Return: pointer to destination buffer
+ * Return: Pointer to the destination buffer.
  */
-char *str_cat(char *d, char *s)
+char *str_cat(char *dest, const char *src)
 {
-	char *res = d;
+    char *result = dest;
 
-	while (*d)
-		d++;
-	while (*s)
-		*d++ = *s++;
-	*d = *s;
-	return (res);
+    while (*dest)
+        dest++;
+
+    while (*src)
+    {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+
+    *dest = '\0';
+
+    return result;
 }

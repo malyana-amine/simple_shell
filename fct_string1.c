@@ -72,15 +72,15 @@ void str_puts(char *s)
  */
 int _put_char(char st)
 {
-	static int i;
-	static char buffer[WRITE_BUF_SIZE];
+    static int i;
+    static char buffer[WRITE_BUF_SIZE];
 
-	if (st == BUF_FLUSH || i >= WRITE_BUF_SIZE)
-	{
-		write(1, buffer, i);
-		i = 0;
-	}
-	if (st != BUF_FLUSH)
-		buffer[i++] = st;
-	return (1);
+    if (i >= WRITE_BUF_SIZE || st == BUF_FLUSH)
+    {
+        write(1, buffer, i);
+        i = 0;
+    }
+    if (st != BUF_FLUSH)
+        buffer[i++] = st;
+    return (1);
 }

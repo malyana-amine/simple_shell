@@ -4,11 +4,11 @@
  * fct_active - Check if the shell is running in an active mode.
  * @pis: Pointer to infocmd struct.
  *
-  * Return: 1 if active, else 0.
+ * Return: 1 if active, else 0.
  */
 int fct_active(infocmd *pis)
 {
-	return (isatty(STDIN_FILENO) && pis->readfd <= 2);
+    return (isatty(STDIN_FILENO) && pis->readfd <= 2);
 }
 
 /**
@@ -20,10 +20,10 @@ int fct_active(infocmd *pis)
  */
 int fct_delim(char strin, char *del)
 {
-	while (*del)
-		if (*del++ == strin)
-			return (1);
-	return (0);
+    while (*del)
+        if (*del++ == strin)
+            return (1);
+    return (0);
 }
 
 /**
@@ -32,13 +32,12 @@ int fct_delim(char strin, char *del)
  *
  * Return: 1 if 'vc' is alphabetic, else 0.
  */
-
 int fct_alphabetic(int vc)
 {
-	if ((vc >= 'a' && vc <= 'z') || (vc >= 'A' && vc <= 'Z'))
-		return (1);
-	else
-		return (0);
+    if ((vc >= 'a' && vc <= 'z') || (vc >= 'A' && vc <= 'Z'))
+        return (1);
+    else
+        return (0);
 }
 
 /**
@@ -47,32 +46,30 @@ int fct_alphabetic(int vc)
  *
  * Return: The converted integer value.
  */
-
 int fct_conv(char *strin)
 {
-	int i, sg = 1, fl = 0, put;
-	unsigned int res = 0;
+    int i, sg = 1, fl = 0, put;
+    unsigned int res = 0;
 
-	for (i = 0;  strin[i] != '\0' && fl != 2; i++)
-	{
-		if (strin[i] == '-')
-			sg *= -1;
+    for (i = 0; strin[i] != '\0' && fl != 2; i++)
+    {
+        if (strin[i] == '-')
+            sg *= -1;
 
-		if (strin[i] >= '0' && strin[i] <= '9')
-		{
-			fl = 1;
-			res *= 10;
-			res += (strin[i] - '0');
-		}
-		else if (fl == 1)
-			fl = 2;
-	}
+        if (strin[i] >= '0' && strin[i] <= '9')
+        {
+            fl = 1;
+            res *= 10;
+            res += (strin[i] - '0');
+        }
+        else if (fl == 1)
+            fl = 2;
+    }
 
-	if (sg == -1)
-		put = -res;
-	else
-		put = res;
+    if (sg == -1)
+        put = -res;
+    else
+        put = res;
 
-	return (put);
+    return (put);
 }
-
